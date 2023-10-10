@@ -4,9 +4,13 @@ import sublinks from "./data";
 const Submenu = () => {
   const { pageId, setPageId } = useGlobalContext();
   const currentPage = sublinks.find((item) => item.pageId === pageId);
-  console.log(currentPage);
+
   return (
-    <div className="submenu show-submenu">
+    <div
+      className={currentPage ? "submenu show-submenu" : "submenu"}
+      onMouseLeave={() => {
+        setPageId(null);
+      }}>
       <h5>{currentPage?.page}</h5>
       <div
         className="submenu-links"
